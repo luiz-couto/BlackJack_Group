@@ -15,6 +15,7 @@ class MatrixGraph  {
         ~MatrixGraph();
         void add_edge(int v1, int v2);
         void del_edge(int v1, int v2);
+        int youngest_commander(int v1);
         void print_graph();
 };
 

@@ -12,9 +12,9 @@ int main() {
     ages[0] = 22;
     ages[1] = 21;
     ages[2] = 23;
-    ages[3] = 30;
+    ages[3] = 18;
     ages[4] = 24;
-    ages[5] = 25;
+    ages[5] = 19;
     ages[6] = 26;
     ages[7] = 27;
     ages[8] = 28;
@@ -24,7 +24,10 @@ int main() {
 
     graph.add_edge(0,1);
     graph.add_edge(9,8);
-    graph.del_edge(8,8);
+    graph.add_edge(2,0);
+    graph.add_edge(3,0);
+    graph.add_edge(5,0);
     graph.print_graph();
+    cout << endl << graph.youngest_commander(0) << endl;
     return 0;
 }

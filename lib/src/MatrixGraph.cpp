@@ -39,6 +39,22 @@ void MatrixGraph::del_edge(int v1, int v2) {
     }
 }
 
+int MatrixGraph::youngest_commander(int v1) {
+    int youngest_age = 1000;
+    for (int i=0; i<this->num_students; i++) {
+        if (this->vertex_matrix[i][v1] == 1) {
+            if (this->ages[i] < youngest_age) {
+                youngest_age = this->ages[i];
+            }
+        }
+    }
+    if (youngest_age == 1000)
+        return -1;
+    else
+        return youngest_age;
+    
+}
+
 void MatrixGraph::print_graph() {
     for (int i=0; i<this->num_students; i++) {
         for (int j=0; j<this->num_students; j++) {
