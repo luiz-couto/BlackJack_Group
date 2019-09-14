@@ -4,9 +4,10 @@
 
 using namespace std;
 
-MatrixGraph::MatrixGraph(int num_students) {
+MatrixGraph::MatrixGraph(int num_students, int *_ages) {
     this->num_students = num_students;
     this->vertex_matrix = new int*[num_students];
+    this->ages = _ages;
 
     for (int i=0; i<num_students; i++) {
         this->vertex_matrix[i] = new int[num_students];
