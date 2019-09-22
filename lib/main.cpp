@@ -12,11 +12,11 @@ int main() {
     ages[0] = 22;
     ages[1] = 21;
     ages[2] = 23;
-    ages[3] = 18;
-    ages[4] = 18;
-    ages[5] = 18;
+    ages[3] = 3;
+    ages[4] = 10;
+    ages[5] = 14;
     ages[6] = 18;
-    ages[7] = 18;
+    ages[7] = 19;
 
     MatrixGraph graph = MatrixGraph(8, ages);
 
@@ -30,9 +30,10 @@ int main() {
     graph.add_edge(6,7);
     graph.add_edge(4,5);
     
-    graph.print_graph();
     graph.del_edge(4,6);
     graph.print_graph();
+    cout << endl;
+    cout << graph.youngest_commander(4);
     //graph.printMeeeting();
 
     // bool w = graph.swap(4,7);

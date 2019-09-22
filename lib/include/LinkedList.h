@@ -22,6 +22,7 @@ class LinkedList  {
         ~LinkedList();
         void insertElement(int index, int age);
         void deleteElement(int index);
+        int youngest();
         void printList();
 };
 
