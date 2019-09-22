@@ -30,14 +30,15 @@ int main() {
     graph.add_edge(6,7);
     
     graph.print_graph();
+    graph.printMeeeting();
 
-    bool w = graph.swap(4,7);
+    // bool w = graph.swap(4,7);
     
-    if (w) {
-        cout << "true" << endl;
-    } else {
-        cout << "false" << endl;
-    }
+    // if (w) {
+    //     cout << "true" << endl;
+    // } else {
+    //     cout << "false" << endl;
+    // }
 
     //cout << endl << graph.youngest_commander(0) << endl;
     return 0;

@@ -129,6 +129,67 @@ bool MatrixGraph::verifySwap(int v1, int v2) {
     return true;
 }
 
+void MatrixGraph::printMeeeting() {
+    int *meetingList = new int[this->num_students];
+    for (int i=0;i<this->num_students;i++) {
+        meetingList[i] = i;
+    }
+    bool passToNext = true;
+    int j = 0;
+    for (int k=0; k<this->num_students; k++) {
+        j = 0;
+        while(j < this->num_students) {
+            passToNext = true;
+            if (this->vertex_matrix[j][meetingList[k]] == 1) {
+                if(isInMyRight(k,j,meetingList)) {
+                    changeInMeeting(k,j,&*meetingList);
+                    passToNext = false;
+                }
+            }
+            if (passToNext == false) {
+                j = 0;
+            } else {
+                j++;
+            }
+        }
+    }
+    for(int m=0;m<this->num_students;m++) {
+        cout << meetingList[m] << " ";
+    }
+    cout << endl;
+}
+
+void MatrixGraph::changeInMeeting(int v1, int v2, int *meetingList) {
+    int pos1;
+    int pos2;
+    for (int i=0;i<this->num_students;i++) {
+        if (meetingList[i] == v1)
+            pos1 = i;
+        if (meetingList[i] == v2)
+            pos2 = i;
+    }
+    cout << pos1 << " " << pos2 << endl;
+    meetingList[pos1] = v2;
+    meetingList[pos2] = v1;
+}
+
+bool MatrixGraph::isInMyRight(int v1, int v2, int *meetingList) {
+    int pos1;
+    int pos2;
+    for (int i=0;i<this->num_students;i++)  {
+        if (meetingList[i] == v1)
+            pos1 = i;
+        if (meetingList[i] == v2)
+            pos2 = i;
+    }
+    cout << pos1 << " " << pos2 << endl;
+    if (pos2 > pos1)
+        return true;
+    else
+        return false;
+    
+}
+
 void MatrixGraph::print_graph() {
     for (int i=0; i<this->num_students; i++) {
         for (int j=0; j<this->num_students; j++) {
