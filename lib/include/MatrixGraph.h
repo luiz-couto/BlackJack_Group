@@ -3,10 +3,11 @@
 
 #include <iostream>
 #include <sstream>
+#include "LinkedList.h"
 
 class MatrixGraph  {
     private:
-        int ** vertex_matrix;
+        LinkedList ** vertex_matrix;
         int num_students;
         int *ages;
         

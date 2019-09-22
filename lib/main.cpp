@@ -28,9 +28,12 @@ int main() {
     graph.add_edge(4,6);
     graph.add_edge(4,7);
     graph.add_edge(6,7);
+    graph.add_edge(4,5);
     
     graph.print_graph();
-    graph.printMeeeting();
+    graph.del_edge(4,6);
+    graph.print_graph();
+    //graph.printMeeeting();
 
     // bool w = graph.swap(4,7);
     
