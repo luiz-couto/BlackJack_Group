@@ -64,8 +64,9 @@ void LinkedList::deleteElement(int index) {
             current->prox = nullptr;
             delete current;
         }
+        this->number_of_elements--;
     }
-    this->number_of_elements--;
+    
 }
 
 void LinkedList::printList() {
