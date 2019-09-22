@@ -121,48 +121,15 @@ void MatrixGraph::printMeeeting() {
 }
 
 void MatrixGraph::posOrder(int index) {
-    //cout << "PASSOU AQuI" << endl;
     for (int i=0;i<this->vertex_matrix[index]->size();i++) {
-        //cout << i << endl;
         this->posOrder(this->vertex_matrix[index]->getByPosition(i));
     }
     if (this->printList[index] != -1) {
-        cout << this->ages[index] << " ";
+        cout << index << " ";
         this->updatePrintList(index);
     }
     return;
 }
-
-// void MatrixGraph::changeInMeeting(int v1, int v2, int *meetingList) {
-//     int pos1;
-//     int pos2;
-//     for (int i=0;i<this->num_students;i++) {
-//         if (meetingList[i] == v1)
-//             pos1 = i;
-//         if (meetingList[i] == v2)
-//             pos2 = i;
-//     }
-//     cout << pos1 << " " << pos2 << endl;
-//     meetingList[pos1] = v2;
-//     meetingList[pos2] = v1;
-// }
-
-// bool MatrixGraph::isInMyRight(int v1, int v2, int *meetingList) {
-//     int pos1;
-//     int pos2;
-//     for (int i=0;i<this->num_students;i++)  {
-//         if (meetingList[i] == v1)
-//             pos1 = i;
-//         if (meetingList[i] == v2)
-//             pos2 = i;
-//     }
-//     cout << pos1 << " " << pos2 << endl;
-//     if (pos2 > pos1)
-//         return true;
-//     else
-//         return false;
-    
-// }
 
 void MatrixGraph::print_graph() {
     for (int i=0; i<this->num_students; i++) {

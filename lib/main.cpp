@@ -8,34 +8,29 @@ using namespace std;
 
 int main() {
     
-    int *ages = new int[10];
-    ages[0] = 22;
-    ages[1] = 21;
-    ages[2] = 23;
-    ages[3] = 30;
-    ages[4] = 10;
-    ages[5] = 14;
-    ages[6] = 18;
-    ages[7] = 19;
-    ages[8] = 55;
-    ages[9] = 56;
+    int *ages = new int[7];
+    ages[0] = 21;
+    ages[1] = 33;
+    ages[2] = 34;
+    ages[3] = 18;
+    ages[4] = 42;
+    ages[5] = 22;
+    ages[6] = 26;
 
-    MatrixGraph graph = MatrixGraph(10, ages);
+    MatrixGraph graph = MatrixGraph(7, ages);
 
-    graph.add_edge(0,7);
-    graph.add_edge(0,1);
-    graph.add_edge(1,5);
-    graph.add_edge(2,3);
-    graph.add_edge(2,4);
-    graph.add_edge(3,4);
-    graph.add_edge(1,2);
-    graph.add_edge(4,5);
-    graph.add_edge(7,6);
-    graph.add_edge(9,8);
+    graph.add_edge(1,0);
+    graph.add_edge(2,0);
+    graph.add_edge(4,1);
+    graph.add_edge(4,2);
+    graph.add_edge(2,5);
+    graph.add_edge(5,3);
+    graph.add_edge(6,3);
+    graph.add_edge(6,5);
 
     
     graph.print_graph();
-    cout << endl;
+    //cout << endl;
     graph.printMeeeting();
     //graph.printMeeeting();
 
