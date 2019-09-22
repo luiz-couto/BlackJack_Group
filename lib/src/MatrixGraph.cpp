@@ -8,14 +8,22 @@ MatrixGraph::MatrixGraph(int num_students, int *_ages) {
     this->num_students = num_students;
     this->vertex_matrix = new LinkedList*[num_students];
     this->ages = _ages;
+    this->printList = new int[this->num_students];
 
     for (int i=0; i<num_students; i++) {
         this->vertex_matrix[i] = new LinkedList();
+    }
+
+    for (int p=0; p<this->num_students; p++) {
+        this->printList[p] = p;
     }
 }
 
 MatrixGraph::~MatrixGraph() {
     
+}
+void MatrixGraph::updatePrintList(int index) {
+    this->printList[index] = -1;
 }
 
 void MatrixGraph::add_edge(int v1, int v2) {
@@ -104,35 +112,26 @@ int MatrixGraph::youngest_commander(int v1) {
 //     return true;
 // }
 
-// void MatrixGraph::printMeeeting() {
-//     int *meetingList = new int[this->num_students];
-//     for (int i=0;i<this->num_students;i++) {
-//         meetingList[i] = i;
-//     }
-//     bool passToNext = true;
-//     int j = 0;
-//     for (int k=0; k<this->num_students; k++) {
-//         j = 0;
-//         while(j < this->num_students) {
-//             passToNext = true;
-//             if (this->vertex_matrix[j][meetingList[k]] == 1) {
-//                 if(isInMyRight(k,j,meetingList)) {
-//                     changeInMeeting(k,j,&*meetingList);
-//                     passToNext = false;
-//                 }
-//             }
-//             if (passToNext == false) {
-//                 j = 0;
-//             } else {
-//                 j++;
-//             }
-//         }
-//     }
-//     for(int m=0;m<this->num_students;m++) {
-//         cout << meetingList[m] << " ";
-//     }
-//     cout << endl;
-// }
+void MatrixGraph::printMeeeting() {
+    for (int i=0; i<this->num_students; i++) {
+        if (this->printList[i] != -1) {
+            this->posOrder(i);
+        }
+    }
+}
+
+void MatrixGraph::posOrder(int index) {
+    //cout << "PASSOU AQuI" << endl;
+    for (int i=0;i<this->vertex_matrix[index]->size();i++) {
+        //cout << i << endl;
+        this->posOrder(this->vertex_matrix[index]->getByPosition(i));
+    }
+    if (this->printList[index] != -1) {
+        cout << this->ages[index] << " ";
+        this->updatePrintList(index);
+    }
+    return;
+}
 
 // void MatrixGraph::changeInMeeting(int v1, int v2, int *meetingList) {
 //     int pos1;

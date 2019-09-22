@@ -85,6 +85,18 @@ int LinkedList::youngest() {
     return youngest;
 }
 
+int LinkedList::size() {
+    return this->number_of_elements;
+}
+
+int LinkedList::getByPosition(int position) {
+    node *current = this->start;
+    for (int i=0;i<position;i++){
+        current = current->prox;
+    }
+    return current->index;
+}
+
 void LinkedList::printList() {
     node *current = this->start;
     for (int i=0; i<this->number_of_elements; i++) {

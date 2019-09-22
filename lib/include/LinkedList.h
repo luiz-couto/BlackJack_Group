@@ -23,6 +23,8 @@ class LinkedList  {
         void insertElement(int index, int age);
         void deleteElement(int index);
         int youngest();
+        int size();
+        int getByPosition(int position);
         void printList();
 };
 
