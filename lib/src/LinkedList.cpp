@@ -111,7 +111,7 @@ bool LinkedList::deleteForSwap(int index) {
 void LinkedList::printList() {
     node *current = this->start;
     for (int i=0; i<this->number_of_elements; i++) {
-        cout << current->index << " -> ";
+        cout << current->index+1 << " -> ";
         current = current->prox;
     }
 }

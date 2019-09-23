@@ -91,7 +91,7 @@ void MatrixGraph::posOrder(int index) {
         this->posOrder(this->vertex_matrix[index]->getByPosition(i));
     }
     if (this->printList[index] != -1) {
-        cout << index << " ";
+        cout << index+1 << " ";
         this->updatePrintList(index);
     }
     return;
@@ -99,7 +99,7 @@ void MatrixGraph::posOrder(int index) {
 
 void MatrixGraph::print_graph() {
     for (int i=0; i<this->num_students; i++) {
-        cout << i << " | " ;
+        cout << i+1 << " | " ;
         this->vertex_matrix[i]->printList();
         cout << endl;
     }
