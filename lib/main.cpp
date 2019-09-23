@@ -61,7 +61,7 @@ int main(int argc, char **argv) {
 
             } else if (command == 'M') {
                 cout << "M ";
-                graph.printMeeeting();
+                graph.printMeeting();
                 cout << endl;
             }
         }

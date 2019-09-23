@@ -103,7 +103,7 @@ void MatrixGraph::verifySwap(int v, int verify) {
     return;
 }
 
-void MatrixGraph::printMeeeting() {
+void MatrixGraph::printMeeting() {
     for (int i=0; i<this->num_students; i++) {
         if (this->printList[i] != -1) {
             this->posOrder(i);

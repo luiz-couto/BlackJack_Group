@@ -27,7 +27,7 @@ class MatrixGraph  {
         void youngest_commander(int v1);
         bool swap(int v1, int v2);
         void posOrder(int index);
-        void printMeeeting();
+        void printMeeting();
         void updatePrintList(int index);
         void print_graph(); //debug
 };
