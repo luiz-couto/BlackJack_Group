@@ -109,6 +109,9 @@ void MatrixGraph::printMeeting() {
             this->posOrder(i);
         }
     }
+    for (int p=0; p<this->num_students; p++) {
+        this->printList[p] = p;
+    }
 }
 
 void MatrixGraph::posOrder(int index) {

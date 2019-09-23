@@ -69,22 +69,6 @@ void LinkedList::deleteElement(int index) {
     
 }
 
-int LinkedList::youngest() {
-    if (this->number_of_elements == 0)
-        return -1;
-
-    node *current = this->start;
-    int youngest = current->age;
-    for (int i=0;i<this->number_of_elements;i++) {
-        
-        if (current->age < youngest) {
-            youngest = current->age;
-        }
-        current = current->prox;
-    }
-    return youngest;
-}
-
 int LinkedList::size() {
     return this->number_of_elements;
 }

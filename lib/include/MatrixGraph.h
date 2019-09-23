@@ -14,9 +14,10 @@ class MatrixGraph  {
         bool canSwap;
         int youngest;
         
-        bool isInMyRight(int v1, int v2, int *meetingList);
         void verifySwap(int v,int verify);
-        void changeInMeeting(int v1, int v2, int *meetingList);
+        void youngest_commander(int v1);
+        void posOrder(int index);
+        void updatePrintList(int index);
     
     public:
         MatrixGraph(int num_students, int *ages);
@@ -24,11 +25,8 @@ class MatrixGraph  {
         void add_edge(int v1, int v2);
         void del_edge(int v1, int v2);
         int getYoungest(int v);
-        void youngest_commander(int v1);
         bool swap(int v1, int v2);
-        void posOrder(int index);
         void printMeeting();
-        void updatePrintList(int index);
         void print_graph(); //debug
 };
 
