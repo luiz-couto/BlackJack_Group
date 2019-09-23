@@ -104,6 +104,7 @@ bool LinkedList::deleteForSwap(int index) {
             this->deleteElement(index);
             return true;
         }
+        current = current->prox;
     }
     return false;
 }

@@ -11,9 +11,10 @@ class MatrixGraph  {
         int num_students;
         int *ages;
         int *printList;
+        bool canSwap;
         
         bool isInMyRight(int v1, int v2, int *meetingList);
-        bool verifySwap(int v);
+        void verifySwap(int v,int verify);
         void changeInMeeting(int v1, int v2, int *meetingList);
     
     public:

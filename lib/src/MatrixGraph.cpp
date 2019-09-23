@@ -9,6 +9,7 @@ MatrixGraph::MatrixGraph(int num_students, int *_ages) {
     this->vertex_matrix = new LinkedList*[num_students];
     this->ages = _ages;
     this->printList = new int[this->num_students];
+    this->canSwap = true;
 
     for (int i=0; i<num_students; i++) {
         this->vertex_matrix[i] = new LinkedList();
@@ -39,43 +40,48 @@ int MatrixGraph::youngest_commander(int v1) {
 }
 
 bool MatrixGraph::swap(int v1, int v2) {
-    if (this->vertex_matrix[v1]->deleteForSwap(v2) == true) {
+    bool t = this->vertex_matrix[v1]->deleteForSwap(v2);
+    bool x = this->vertex_matrix[v2]->deleteForSwap(v1);
+    if (t == true) {
         bool canSwap = true;
         this->add_edge(v2,v1);
-        canSwap = this->verifySwap(v2);
-        if (!canSwap) {
+        this->verifySwap(v2,v2);
+        if (this->canSwap == false) {
             this->del_edge(v2,v1);
             this->add_edge(v1,v2);
+            this->canSwap = true;
             return false;
         } else {
             return true;
         }
-    } else if (this->vertex_matrix[v2]->deleteForSwap(v1) == true) {
+    } if (x == true) {
         bool canSwap = true;
         this->add_edge(v1,v2);
-        canSwap = this->verifySwap(v1);
-        if (!canSwap) {
+        this->verifySwap(v1,v1);
+        if (this->canSwap == false) {
             this->del_edge(v1,v2);
             this->add_edge(v2,v1);
+            this->canSwap = true;
             return false;
         } else {
             return true;
         }
+        return true;
 
-    } else {
-        return false;
-    }
+    } if (x == false && t == false)
+            return false;
     
 }
 
-bool MatrixGraph::verifySwap(int v) {
+void MatrixGraph::verifySwap(int v, int verify) {
     for (int i=0;i<this->vertex_matrix[v]->size();i++) {
-        if (this->vertex_matrix[v]->getByPosition(i) == v) {
-            return false;
+        if (this->vertex_matrix[v]->getByPosition(i) == verify) {
+            this->canSwap = false;
+            break;
         }
-        this->verifySwap(this->vertex_matrix[v]->getByPosition(i));
+        this->verifySwap(this->vertex_matrix[v]->getByPosition(i),verify);
     }
-    return true;
+    return;
 }
 
 void MatrixGraph::printMeeeting() {
