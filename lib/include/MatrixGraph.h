@@ -13,7 +13,7 @@ class MatrixGraph  {
         int *printList;
         
         bool isInMyRight(int v1, int v2, int *meetingList);
-        bool verifySwap(int v1, int v2);
+        bool verifySwap(int v);
         void changeInMeeting(int v1, int v2, int *meetingList);
     
     public:

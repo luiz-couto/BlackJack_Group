@@ -97,6 +97,17 @@ int LinkedList::getByPosition(int position) {
     return current->index;
 }
 
+bool LinkedList::deleteForSwap(int index) {
+    node *current = this->start;
+    for (int i=0;i<this->number_of_elements;i++) {
+        if (current->index == index) {
+            this->deleteElement(index);
+            return true;
+        }
+    }
+    return false;
+}
+
 void LinkedList::printList() {
     node *current = this->start;
     for (int i=0; i<this->number_of_elements; i++) {

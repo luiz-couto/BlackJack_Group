@@ -25,6 +25,7 @@ class LinkedList  {
         int youngest();
         int size();
         int getByPosition(int position);
+        bool deleteForSwap(int index);
         void printList();
 };
 

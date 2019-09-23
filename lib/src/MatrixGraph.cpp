@@ -38,79 +38,45 @@ int MatrixGraph::youngest_commander(int v1) {
     return this->vertex_matrix[v1]->youngest();
 }
 
-// bool MatrixGraph::swap(int v1, int v2) {
-//     this->vertex_matrix[v1][v2] = 0;
-//     this->vertex_matrix[v2][v1] = 1;
-   
-   
-//     bool canSwap = verifySwap(v1,v2);
-//     if (canSwap == false) {
-//         this->vertex_matrix[v1][v2] = 1;
-//         this->vertex_matrix[v2][v1] = 0;
-//         return false;
-//     } else {
-//         return true;
-//     }
-    
-// }
+bool MatrixGraph::swap(int v1, int v2) {
+    if (this->vertex_matrix[v1]->deleteForSwap(v2) == true) {
+        bool canSwap = true;
+        this->add_edge(v2,v1);
+        canSwap = this->verifySwap(v2);
+        if (!canSwap) {
+            this->del_edge(v2,v1);
+            this->add_edge(v1,v2);
+            return false;
+        } else {
+            return true;
+        }
+    } else if (this->vertex_matrix[v2]->deleteForSwap(v1) == true) {
+        bool canSwap = true;
+        this->add_edge(v1,v2);
+        canSwap = this->verifySwap(v1);
+        if (!canSwap) {
+            this->del_edge(v1,v2);
+            this->add_edge(v2,v1);
+            return false;
+        } else {
+            return true;
+        }
 
-// bool MatrixGraph::verifySwap(int v1, int v2) {
-//     int *checkList = new int[this->num_students];
-//     for (int j=0;j<this->num_students;j++) {
-//         checkList[j] == -1;
-//     }
+    } else {
+        return false;
+    }
     
-//     int k = 0;
-//     for (int i=0; i<this->num_students; i++) {
-//         if (this->vertex_matrix[v1][i] == 1) {
-//             checkList[k] = i;
-//             k++;
-//         }
-//     }
-//     if (checkList[0] == -1)
-//         return true;
-    
-//     bool passHere = false;
-//     bool alreadyThere = false;
-//     int now = checkList[0];
-//     while(1) {
-        
-//         passHere = false;
-//         for (int a=0; a<this->num_students; a++) {
-//             if (this->vertex_matrix[now][a] == 1) {
-//                 if(a == v2) {
-//                     return false;
-//                 }
-//                 for (int u=0;u<this->num_students;u++) {
-//                     if (checkList[u] == a) {
-//                         alreadyThere = true;
-//                     }
-//                 }
-//                 if(!alreadyThere) {
-//                     checkList[k] = a;
-//                     k++;
-//                 }
-                
-//             }
-//             alreadyThere = false;
-//         }
-//         for (int y=0; y<this->num_students;y++) {
-//             if(checkList[y] == now) {
-//                 checkList[y] = -1;
-//             }
-//         }
-//         for (int z=0; z<this->num_students; z++) {
-//             if (checkList[z] != -1 ) {
-//                 now = checkList[z];
-//                 passHere = true;
-//             }
-//         }
-//         if(!passHere)
-//             break;   
-        
-//     }
-//     return true;
-// }
+}
+
+bool MatrixGraph::verifySwap(int v) {
+    for (int i=0;i<this->vertex_matrix[v]->size();i++) {
+        if (this->vertex_matrix[v]->getByPosition(i) == v) {
+            return false;
+        }
+        this->verifySwap(this->vertex_matrix[v]->getByPosition(i));
+    }
+    return true;
+}
 
 void MatrixGraph::printMeeeting() {
     for (int i=0; i<this->num_students; i++) {
