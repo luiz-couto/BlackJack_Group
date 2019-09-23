@@ -10,6 +10,7 @@ MatrixGraph::MatrixGraph(int num_students, int *_ages) {
     this->ages = _ages;
     this->printList = new int[this->num_students];
     this->canSwap = true;
+    this->youngest = 1000;
 
     for (int i=0; i<num_students; i++) {
         this->vertex_matrix[i] = new LinkedList();
@@ -35,8 +36,26 @@ void MatrixGraph::del_edge(int v1, int v2) {
     this->vertex_matrix[v1]->deleteElement(v2);
 }
 
-int MatrixGraph::youngest_commander(int v1) {
-    return this->vertex_matrix[v1]->youngest();
+void MatrixGraph::youngest_commander(int v1) {
+    for (int i=0;i<this->vertex_matrix[v1]->size();i++) {
+        int next = this->vertex_matrix[v1]->getByPosition(i);
+        if (this->ages[next] < this->youngest) {
+            this->youngest = this->ages[next];
+        }
+        this->youngest_commander(next);
+    }
+    return;
+}
+int MatrixGraph::getYoungest(int v) {
+    this->youngest_commander(v);
+    if (this->youngest == 1000) {
+        return -1;
+    } else {
+        int y = this->youngest;
+        this->youngest = 1000;
+        return y;
+    }
+
 }
 
 bool MatrixGraph::swap(int v1, int v2) {

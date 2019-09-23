@@ -44,7 +44,7 @@ int main(int argc, char **argv) {
             if (command == 'C'){
                 int index;
                 file >> index;
-                int yc = graph.youngest_commander(index-1);
+                int yc = graph.getYoungest(index-1);
                 if (yc == -1) 
                     cout << "C *" << endl;
                 else 
