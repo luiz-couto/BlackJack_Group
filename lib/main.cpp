@@ -4,7 +4,7 @@
 #include <fstream>
 #include <string>
 
-#include "MatrixGraph.h"
+#include "Graph.h"
 
 using namespace std;
 
@@ -29,7 +29,7 @@ int main(int argc, char **argv) {
             file >> ages[j]; 
         }
         
-        MatrixGraph graph = MatrixGraph(n, ages);
+        Graph graph = Graph(n, ages);
 
         int v1;
         int v2;

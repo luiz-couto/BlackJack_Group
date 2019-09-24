@@ -1,13 +1,13 @@
-#ifndef MATRIX_GRAPH_
-#define MATRIX_GRAPH_
+#ifndef GRAPH_
+#define GRAPH_
 
 #include <iostream>
 #include <sstream>
 #include "LinkedList.h"
 
-class MatrixGraph  {
+class Graph  {
     private:
-        LinkedList ** vertex_matrix;
+        LinkedList ** vertex_list ;
         int num_students;
         int *ages;
         int *printList;
@@ -20,8 +20,8 @@ class MatrixGraph  {
         void updatePrintList(int index);
     
     public:
-        MatrixGraph(int num_students, int *ages);
-        ~MatrixGraph();
+        Graph(int num_students, int *ages);
+        ~Graph();
         void add_edge(int v1, int v2);
         void del_edge(int v1, int v2);
         int getYoungest(int v);
