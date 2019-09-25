@@ -16,7 +16,7 @@ class Graph  {
         
         void verifySwap(int v,int verify);
         void youngest_commander(int v1);
-        void posOrder(int index);
+        void posOrder(int index, bool debug);
         void updatePrintList(int index);
     
     public:
@@ -26,7 +26,7 @@ class Graph  {
         void del_edge(int v1, int v2);
         int getYoungest(int v);
         bool swap(int v1, int v2);
-        void printMeeting();
+        void printMeeting(bool debug);
         void print_graph(); //debug
 };
 

@@ -103,10 +103,10 @@ void Graph::verifySwap(int v, int verify) {
     return;
 }
 
-void Graph::printMeeting() {
+void Graph::printMeeting(bool debug) {
     for (int i=0; i<this->num_students; i++) {
         if (this->printList[i] != -1) {
-            this->posOrder(i);
+            this->posOrder(i, debug);
         }
     }
     for (int p=0; p<this->num_students; p++) {
@@ -114,12 +114,13 @@ void Graph::printMeeting() {
     }
 }
 
-void Graph::posOrder(int index) {
+void Graph::posOrder(int index, bool debug) {
     for (int i=0;i<this->vertex_list[index]->size();i++) {
-        this->posOrder(this->vertex_list[index]->getByPosition(i));
+        this->posOrder(this->vertex_list[index]->getByPosition(i),debug);
     }
     if (this->printList[index] != -1) {
-        cout << index+1 << " ";
+        if (!debug)
+            cout << index+1 << " ";
         this->updatePrintList(index);
     }
     return;
