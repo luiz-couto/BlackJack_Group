@@ -1,13 +1,15 @@
 #include <stdlib.h>
+#include <stdio.h>
 #include <iostream>
 #include <sstream>
 #include <fstream>
 #include <string>
 #include <chrono>
+#include <string.h>
+#include <ios>
 
 #include "Graph.h"
 
-using namespace std;
 
 int main(int argc, char **argv) {
 
@@ -20,10 +22,11 @@ int main(int argc, char **argv) {
     int m;
     int i;
 
-    string line;
-    ifstream file(argv[1]);
+    std::string line;
+    std::ifstream file(argv[1]);
+
     if (file.is_open()) {
-        if (argv[2] == "-d") {
+        if (strcmp(argv[2],"-d") == 0) {
             double media = 0;
             for (int d=0; d<=20; d++) {
                 auto start = std::chrono::high_resolution_clock::now();
@@ -59,12 +62,15 @@ int main(int argc, char **argv) {
                         graph.printMeeting(true);
                     }
                 }
+                file.clear();
+                file.seekg(0, std::ios::beg);
+
                 auto stop = std::chrono::high_resolution_clock::now();
                 auto duration = std::chrono::duration_cast<std::chrono::microseconds>(stop-start);
                 media = media + duration.count();
 
             }
-            std::cout << media/20 << endl;
+            std::cout << media/20 << std::endl;
             return 0;
         }
 
