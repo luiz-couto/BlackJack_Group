@@ -29,7 +29,6 @@ int main(int argc, char **argv) {
         if (strcmp(argv[2],"-d") == 0) {
             double media = 0;
             for (int d=0; d<=20; d++) {
-                auto start = std::chrono::high_resolution_clock::now();
                 file >> n >> m >> i;
                 int *ages = new int[n];
                 for (int j=0;j<n;j++) {
@@ -44,7 +43,8 @@ int main(int argc, char **argv) {
                     file >> v1 >> v2;
                     graph.add_edge(v2-1,v1-1);
                 }
-                
+
+                auto start = std::chrono::high_resolution_clock::now();
                 char command;
                 for (int l=0;l<i;l++) {
                     file >> command;
