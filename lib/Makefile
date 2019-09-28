@@ -3,7 +3,7 @@ SRCDIR := src
 OBJDIR := build
 BINDIR := bin
 
-MAIN := main.cpp
+MAIN := tp1.cpp
 
 SRCEXT := cpp
 SOURCES := $(shell find $(SRCDIR) -type f -name "*.$(SRCEXT)")
@@ -26,4 +26,4 @@ clean:
 	$(RM) -rf $(BINDIR) $(OBJDIR) *.gcda *.gcno main main.dSYM
 
 main: $(OBJECTS)
-	$(CC) $(CFLAGS) $(INC) $(MAIN) $^ -o main
+	$(CC) $(CFLAGS) $(INC) $(MAIN) $^ -o tp1

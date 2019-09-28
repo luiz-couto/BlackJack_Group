@@ -116,12 +116,13 @@ void Graph::printMeeting() {
 
 void Graph::posOrder(int index) {
     for (int i=0;i<this->vertex_list[index]->size();i++) {
-        this->posOrder(this->vertex_list[index]->getByPosition(i));
+        int next = this->vertex_list[index]->getByPosition(i);
+        if (this->printList[next] != -1) {
+            this->posOrder(next);
+        }    
     }
-    if (this->printList[index] != -1) {
         cout << index+1 << " ";
         this->updatePrintList(index);
-    }
     return;
 }
 
